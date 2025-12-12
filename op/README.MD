@@ -1,22 +1,24 @@
 ## op
-### 1. 为什么需要op
 
-- 如果你跟明察质检一样需要一些实时的类型计算，如
-    - 数值比较
-    - 选项查找
-    - 时间比较
-    - 文本相似度计算
-    - 条件合并
+### 1. Why You Need `op`
 
-你满足以上情况之一我建议你使用本包
+- If you require real-time type-based computations such as:
+  - Numeric comparisons
+  - Option (enum) lookups
+  - Time comparisons
+  - Text similarity calculations
+  - Conditional merging
 
-### 2. 代码结构
-- op_bool.go bool类型运算符、及其实现
-- op_has.go 选项(枚举)类型运算符、及其实现
-- op_time.go 时间类型运算符、及其实现
-- op_num.go (1元，2元,3元)数值类型运算符、及其实现
-- op_word.go 文本类型运算符、及其实现，可指定（自定义）相似度计算方法
-    - default 完全匹包含为1：否则0
-    - reg 正则匹配为1，否则0
-    - levenshtein 文氏距离（编辑距离）比较整句和关键词
-    - levenshtein-window 滑窗文氏距离（滑窗编辑距离）,比较句中的词和关键词
+If any of the above applies to your use case, we recommend using this package.
+
+### 2. Code Structure
+
+- **`op_bool.go`**: Boolean-type operators and their implementations  
+- **`op_has.go`**: Option (enum)-type operators and their implementations  
+- **`op_time.go`**: Time-type operators and their implementations  
+- **`op_num.go`**: Unary, binary, and ternary numeric-type operators and their implementations  
+- **`op_word.go`**: Text-type operators and their implementations, supporting customizable similarity calculation methods:
+  - **`default`**: Exact match or substring containment → returns `1`; otherwise → `0`  
+  - **`reg`**: Regular expression match → returns `1`; otherwise → `0`  
+  - **`levenshtein`**: Levenshtein distance (edit distance) comparing entire sentence against keyword  
+  - **`levenshtein-window`**: Sliding-window Levenshtein distance, comparing individual words within a sentence against a keyword
