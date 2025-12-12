@@ -55,7 +55,7 @@ A collection of utility functions and tools for Golang, providing event bus, tim
 | excelx | 20.6% |
 | gox | 57.1% |
 | httpx | 72.2% |
-| jsonx | 8.2% |
+| jsonx | 53.7% |
 | logx | 61.2% |
 | op | 88.9% |
 | utils | 79.4% |
