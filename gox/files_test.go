@@ -3,6 +3,7 @@ package gox
 import (
 	"context"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -21,6 +22,7 @@ func TestPathExists(t *testing.T) {
 func TestWorkDir(t *testing.T) {
 	expected, err := os.Getwd()
 	assert.NoError(t, err)
+	expected = strings.Replace(expected, "\\", "/", -1)
 
 	actual := WorkDir()
 	assert.Equal(t, expected, actual)

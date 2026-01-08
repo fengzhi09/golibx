@@ -43,7 +43,10 @@ func TestArr_GetMethods(t *testing.T) {
 	// 测试GetVal
 	val := arr.GetVal(0)
 	assert.NotNil(t, val)
-	assert.Equal(t, float64(123), val.ToGVal()) // JSON numbers are float64 by default
+	assert.Equal(t, int64(123), val.ToGVal()) // JSON numbers JInt use int64
+	val = arr.GetVal(3)
+	assert.NotNil(t, val)
+	assert.Equal(t, float64(3.14), val.ToGVal()) // JSON numbers JNumber use float64
 
 	// 测试GetInt
 	assert.Equal(t, 123, arr.GetInt(0))

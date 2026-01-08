@@ -169,5 +169,8 @@ func (c *fileWriter) Write(event *LogEvent) error {
 }
 
 func (c *fileWriter) Close(ctx context.Context) error {
+	if c.cur != nil {
+		return c.cur.Close()
+	}
 	return nil
 }

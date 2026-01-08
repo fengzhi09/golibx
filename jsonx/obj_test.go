@@ -201,7 +201,7 @@ func TestObj_MergeMethods(t *testing.T) {
 	obj1.Merge(obj2)
 	assert.Equal(t, 3, obj1.Size())
 	assert.Equal(t, "value1", obj1.GetStr("key1"))
-	assert.Equal(t, 456, obj1.GetInt("key2"))      // 应该被覆盖
+	assert.Equal(t, 456, obj1.GetInt("key2")) // 应该被覆盖
 	assert.Equal(t, "value3", obj1.GetStr("key3")) // 应该被添加
 
 	// 测试MergePtr方法
@@ -328,3 +328,4 @@ func TestObj_ToObjToObjPtrToArr(t *testing.T) {
 	assert.Equal(t, JArr{}, emptyArr)
 	assert.Equal(t, 0, emptyArr.Size())
 }
+

@@ -33,21 +33,21 @@ func ArrSub[T comparable](items, skips []T) []T {
 	return res
 }
 
-func In[T any](val T, arr ...T) bool {
+func In[T comparable](val T, arr ...T) bool {
 	return IndexOf(arr, val) >= 0
 }
 
-func IndexOf[T any](a []T, b T) int {
+func IndexOf[T comparable](a []T, b T) int {
 	alen := len(a)
 	for i := 0; i < alen; i++ {
-		if XEq(a[i], b) {
+		if a[i] == b {
 			return i
 		}
 	}
 	return -1
 }
 
-func ArrStarts[T any](a, b []T) bool {
+func ArrStarts[T comparable](a, b []T) bool {
 	alen, blen := len(a), len(b)
 	if alen < blen {
 		return false
@@ -55,7 +55,7 @@ func ArrStarts[T any](a, b []T) bool {
 
 	cnt := 0
 	for j := 0; j < blen; j++ {
-		if !XEq(a[j], b[j]) {
+		if a[j] != b[j] {
 			break
 		}
 		cnt = cnt + 1
@@ -63,7 +63,7 @@ func ArrStarts[T any](a, b []T) bool {
 	return cnt == blen
 }
 
-func ArrEnds[T any](a, b []T) bool {
+func ArrEnds[T comparable](a, b []T) bool {
 	alen, blen := len(a), len(b)
 	if alen < blen {
 		return false
@@ -71,7 +71,7 @@ func ArrEnds[T any](a, b []T) bool {
 
 	cnt := 0
 	for j := 0; j < blen; j++ {
-		if !XEq(a[alen-blen+j], b[j]) {
+		if a[alen-blen+j] != b[j] {
 			break
 		}
 		cnt = cnt + 1
@@ -79,11 +79,11 @@ func ArrEnds[T any](a, b []T) bool {
 	return cnt == blen
 }
 
-func ArrIn[T any](a, b []T) bool {
+func ArrIn[T comparable](a, b []T) bool {
 	return ArrIndexOf(a, b) >= 0
 }
 
-func ArrIndexOf[T any](a, b []T) int {
+func ArrIndexOf[T comparable](a, b []T) int {
 	alen, blen := len(a), len(b)
 	if alen < blen {
 		return -1
@@ -92,7 +92,7 @@ func ArrIndexOf[T any](a, b []T) int {
 	for i := 0; i < alen; i++ {
 		cnt := 0
 		for j := 0; j < blen; j++ {
-			if !XEq(a[i+j], b[j]) {
+			if a[i+j] != b[j] {
 				break
 			}
 			cnt = cnt + 1
